@@ -1,5 +1,5 @@
 
-[![CircleCI](https://circleci.com/gh/holmHin/udacity_project4.svg?style=svg](<LINK>)
+[![CircleCI](https://circleci.com/gh/holmHin/udacity_project4.svg?style=svg)](<LINK>)
 
 ## Project Overview
 
