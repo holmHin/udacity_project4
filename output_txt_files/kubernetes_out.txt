@@ -1,0 +1,75 @@
+ .devops  holm  holm-tp  mnt  dc6f812f-13b4-462b-80bd-8fef9a3cea43  …  project4  DevOps_Microservices  project-ml-microservice-kubernetes  master  7✎  ?  $  ./run_kubernetes.sh 
+deployment.apps/uda-project created
+NAME                                   READY   STATUS              RESTARTS   AGE
+uda-project-588dcbf66d-rjf47           0/1     ContainerCreating   0          0s
+service/uda-project exposed 
+.devops  holm  holm-tp  mnt  dc6f812f-13b4-462b-80bd-8fef9a3cea43  …  project4  DevOps_Microservices  project-ml-microservice-kubernetes  master  7✎  ?  $  kubectl describe service
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.96.0.1
+IPs:               10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         192.168.49.2:8443
+Session Affinity:  None
+Events:            <none>
+
+
+Name:                     uda-project
+Namespace:                default
+Labels:                   app=uda-project
+Annotations:              <none>
+Selector:                 app=uda-project
+Type:                     LoadBalancer
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.103.58.169
+IPs:                      10.103.58.169
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  31283/TCP
+Endpoints:                172.17.0.3:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+ .devops  holm  holm-tp  mnt  dc6f812f-13b4-462b-80bd-8fef9a3cea43  …  project4  DevOps_Microservices  project-ml-microservice-kubernetes  master  7✎  ?  $  kubectl logs --follow uda-project-588dcbf66d-rjf47
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 338-063-630
+[2021-08-09 21:59:46,912] INFO in app: JSON payload: 
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2021-08-09 21:59:46,928] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-08-09 21:59:46,941] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-08-09 21:59:46,951] INFO in app: Prediction is: 
+[20.35373177134412]
+172.17.0.1 - - [09/Aug/2021 21:59:46] "POST /predict HTTP/1.1" 200 -
+[2021-08-09 21:59:47,988] INFO in app: JSON payload: 
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2021-08-09 21:59:48,006] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-08-09 21:59:48,025] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-08-09 21:59:48,037] INFO in app: Prediction is: 
+[20.35373177134412]
+172.17.0.1 - - [09/Aug/2021 21:59:48] "POST /predict HTTP/1.1" 200 -
+
+
