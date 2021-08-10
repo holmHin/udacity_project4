@@ -1,7 +1,51 @@
 
 [![CircleCI](https://circleci.com/gh/holmHin/udacity_project4.svg?style=svg)](<LINK>)
 
-## Project Overview
+# Project 4 Udacity
+
+
+## structure
+
+
+
+## Setup the Environment
+
+* Create a virtualenv and activate it
+* Run `make install` to install the necessary dependencies
+
+### Running `app.py`
+
+1. Standalone:  `python app.py`
+2. Run in Docker:  `./run_docker.sh`
+3. Run in Kubernetes:  `./run_kubernetes.sh`
+
+### Kubernetes Steps
+
+* Setup and Configure Docker locally
+* Setup and Configure Kubernetes locally
+* Create Flask app in Container
+* Run via kubectl
+
+
+
+**Files:**
+
+* `app.py`: the main python application
+* `Dockerfile`: The Dockerfile to build the docker iamge
+* `Makefile`: Makefile to get dependencies and build project
+* `requirements.txt`: All dependencies listed to be installed
+* `run_docker.sh`: creates an docker image and runs it!
+* `run_kubernetes.sh`: runs the application in kubernetes, by polling it from docker hub
+* `upload_docker.sh`: Pushes the local build docker image to docker-hub
+
+**Directories**
+
+* `.circleCI`: Pipline configuration for circleCI
+* `output_txt_files`: Results of Execution
+
+---
+
+### Project Overview
 
 In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
 
@@ -21,23 +65,3 @@ Your project goal is to operationalize this working, machine learning microservi
 You can find a detailed [project rubric, here](https://review.udacity.com/#!/rubrics/2576/view).
 
 **The final implementation of the project will showcase your abilities to operationalize production microservices.**
-
----
-
-## Setup the Environment
-
-* Create a virtualenv and activate it
-* Run `make install` to install the necessary dependencies
-
-### Running `app.py`
-
-1. Standalone:  `python app.py`
-2. Run in Docker:  `./run_docker.sh`
-3. Run in Kubernetes:  `./run_kubernetes.sh`
-
-### Kubernetes Steps
-
-* Setup and Configure Docker locally
-* Setup and Configure Kubernetes locally
-* Create Flask app in Container
-* Run via kubectl
